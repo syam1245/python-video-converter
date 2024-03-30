@@ -28,7 +28,7 @@ def convert_video():
         cmd = f"ffmpeg -i {input_file} -c:v libx265 -c:a copy -threads 0 {output_file}"
         process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
 
-        # Use tqdm to create a progress bar
+        
         total_duration = get_video_duration(input_file)
         with tqdm(total=total_duration, unit="s", desc="Converting") as pbar:
             for line in process.stdout:
